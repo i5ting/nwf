@@ -1,5 +1,8 @@
+# 我看Thinkjs
 
-# thinkjs
+- 官网 https://thinkjs.org
+- 代码 https://github.com/75team/thinkjs
+- 作者 李成银 @welefen
 
 ## 安装
 
@@ -372,7 +375,7 @@ export default class extends Base {
 
 ## 性能
 
-前面提到了，采用babel写的，所以效率不会很高。
+前面提到了，开发阶段采用babel写的，所以效率不会很高。
 
 ```
 $ autocannon -c 100 -d 5 -p 10 localhost:8360
@@ -463,5 +466,91 @@ Bytes/Sec    829.03 kB 52.43 kB 884.74 kB
 10k requests in 5s, 4.2 MB read
 ```
 
-单就view渲染上看，thinkjs比express要低一点，大约10%左右。但功能比express能处理的要多。
+单就view渲染上看，thinkjs比express要低一点，大约10%左右。但功能比express能处理的要多。翻源码的时候看到view上也有hook。而且src/core/view里的render貌似没有做缓存优化，但在src/adapter/template里做了fileCache。
 
+## controller
+
+支持2种
+
+- 普通的控制器
+- 多级控制器
+
+配合router写起来，是写框架里比较耗时的。
+
+支持`__before`和`__after`这样的回调钩子，对于app和controller控制来说是非常实用的。使用co来实现也是可圈可点，此处如果使用koa可以更加优雅。
+
+之前曾经这样写过
+
+```
+class PathController extends BaseController {
+  constructor(app, ctx, next) {
+    super(app, ctx, next)
+    
+    this.path = '/c'
+    // this.global_filter.push('custom_filter')
+    this.post_filter = [this.log]
+  }
+  
+  before() {
+  
+  }
+  
+  log(ctx, next) {
+    ctx.someText = 'some'
+    // console.log('before')
+    return next().then(function(){
+      // console.log('after')
+    })
+  }
+
+  post(req, res) {
+    console.log(this.ctx.someText)
+    var a = this.reqbody.a
+    
+    return res.body = this.ctx.someText
+  } 
+  
+  after() {
+  }
+}
+```
+
+这里的before和after和thinkjs的一样。对于action的处理是通过promise处理，也可以。
+
+唯一看起来稍稍不那么爽的是rest部分，有点怪，很容易写坏了。而且文档也比较少，估计是thinkjs不太想主推吧。
+
+## 路由
+
+完全自己正则，是quick偷懒写法。默认约定，如果想配置就自己正则，也是够用的。
+
+## 各种adapter，db，中间件，hook，插件
+
+这些都是非常好的概念，thinkjs做了很多内置。这是把双刃剑
+
+- 方便，简单
+- 臃肿，变更麻烦
+
+## 总结
+
+Thinkjs的特点
+
+- 完全自己实现，对已有框架很少借鉴
+- 内置各种adapter，db，中间件，hook，插件，非常丰富，all in one 比组装更适合新手
+- 遵循mvc和coc
+- 使用最潮的es6/es7/ts特性，对aysnc函数，exports等都非常好的支持
+- 支持i18n等实用功能
+- 内置pm2和nginx集成，部署方便
+- 有自己的脚手架，稍弱
+- 性能不错，虽然比express稍弱，但功能强大许多
+- 测试丰富，代码质量有保障
+- 文档健全，是经过设计的，支持多语言
+- 背后有75团和李成银支持，最近一周内有更新，代码提交2600+，35人贡献，整体来说算健康
+
+不足也是有的
+
+- 参考Thinkphp，对于熟悉rails类的人不太舒服，熟悉php的人应该上手极其简单
+- babel安装包还是比较大啊，虽然很多人已经标配
+- 代码完全自己实现，难免有些命名，习惯上的问题
+- 很难复用开发者已有的经验，跟express、koa几乎是另外一条路
+
+> 结语：在目前来看，对于最潮的es6/es7/ts特性上，Thinkjs几乎是唯一的选型。如果用户是新手或者有php开发经验，将会是一款快速开发的利器。
