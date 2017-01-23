@@ -8,9 +8,9 @@ Node.js从2009横空出世之后，至今已经7年有余，各种web框架也�
 
 ![Nodejs Overview](images/nodejs-overview.png)
 
-这是现代web里Node.js参与的。其实Node.js的应用场景，远远不止这些，目前都用的比较浅，大部分围绕在前端和Proxy层，这其实是不够的，但由于历史原因，很多遗留问题，目前Node.js只能先搞定前端，然后做Proxy层，然后继续在Proxy组装服务，让Java等只提供服务就好，这是一个理想的边界，对Node.js和Java来说是双赢的，将服务组装和api交给Node.js能够更灵活、应变，当产品`ci`了的时候，前端直接改就好了，同时又不影响Java优点的使用。
+这是现代web里Node.js参与的部分。其实Node.js的应用场景，远远不止这些，目前都用的比较浅，大部分围绕在前端和Proxy层，这其实是不够的，但由于历史原因，很多遗留问题，目前Node.js只能先搞定前端，然后做Proxy层，然后继续在Proxy组装rpc服务，让Java等专注提供服务就好，这是一个理想的边界，对Node.js和Java来说是双赢的，将服务组装和api交给Node.js能够更灵活、应变，当线上系统遇到崩溃的时候，前端直接改就好了，同时又不影响Java优点的使用。
 
-它能干什么？
+Node.js能干什么？
 
 - 网站（如express/koa等）
 - im即时聊天(socket.io)
@@ -19,19 +19,16 @@ Node.js从2009横空出世之后，至今已经7年有余，各种web框架也�
 - http proxy延伸，组装rpc服务，作为微服务的一部分
 - 前端构建工具(grunt/gulp/bower/webpack/fis3...)
 - 写操作系统（NodeOS）
-- 跨平台打包工具（以前叫Node-WebKit现在叫nw.js,electron）
+- 跨平台打包工具（nw.js、electron、cordova/phonegap）
 - 命令行工具（比如cordova）
 - 编辑器（atom，vscode）
 
 更多的见
-https://github.com/sindresorhus/awesome-nodejs
-
-
-http://stackshare.io/nodejs/in-stacks
+https://github.com/sindresorhus/awesome-nodejs 和 http://stackshare.io/nodejs/in-stacks
 
 ## 异步流程演进
 
-这里加异步流程演进部分，目的是为了后面框架变化做铺垫，同时异步流程控制也是Node.js非常核心的内容，是每个开发者都必须掌握的。
+这里加异步流程演进部分，目的是为了后面讲述框架变化做铺垫，同时异步流程控制也是Node.js非常核心的内容，是每个开发者都必须掌握的。
 
 JavaScript流程控制的演进过程，分以下6部分:
 
@@ -44,7 +41,7 @@ JavaScript流程控制的演进过程，分以下6部分:
 
 看起来挺简单的，作为*js（沾边）工程师的各位自测一下，当前是哪个阶段？
 
-综上所述
+我对异步流程控制的总结
 
 - Async函数是趋势，如果Chrome 52. v8 5.1已经支持Async函数(https://github.com/nodejs/CTC/issues/7)了，Node.js已经支持，Node.js 7.x版本需要加flag才能开启，在明年的8.x里会默认开启。
 - Async和Generator函数里都支持promise，所以promise是必须会的。
@@ -69,7 +66,9 @@ JavaScript流程控制的演进过程，分以下6部分:
 
 ### Express or Koa?
 
-Express是Node.js世界里最著名的框架，非常成熟、稳定，目前也是大家用的最多的框架。先看一下演进的历史，最早是有connect，一个中间件框架，是对Node.js内置的http模块的补充，主要是提供了中间件机制。然后有了express，在express 4.0之前都是内置connect作为中间件内核的，在4.0之后就express自己实现了，但兼容connect系列的中间件，所以很多书（比如Node.js in action）介绍http之后介绍connect之后介绍express，虽然Node.js版本老点，当整体来看，说不过时的。在express下一个版本里router也会被独立出去，但2年了，迟迟未发，中间颇为周折，最开始是tj名下的，后来tj象征性的转让给strongloop，但是转过去之后并不是很愉快，导致很多人呼吁独立，毕竟商业公司和开源不一样，所以就转到express独立了，由dougwilson一直维护。express的代码和测试都非常不错，大家可以看看，尤其是测试，会扒出无数没有遇到的场景，是学习的非常的途径。
+Express是Node.js世界里最著名的框架，非常成熟、稳定，目前也是大家用的最多的框架。
+
+先看一下演进的历史，最早是有connect，一个中间件框架，是对Node.js内置的http模块的补充，主要是提供了中间件机制。然后有了express，在express 4.0之前都是内置connect作为中间件内核的，在4.0之后就剔除了connect，express自己实现中间件机制，但兼容connect系列的中间件，所以很多书（比如Node.js in action）介绍http之后介绍connect之后介绍express，虽然Node.js版本老点，当整体来看，说不过时的。在express下一个版本里router也会被独立出去，但2年了，迟迟未发，中间颇为周折，最开始是tj名下的，后来tj象征性的转让给strongloop，但是转过去之后并不是很愉快，导致很多人呼吁独立，毕竟商业公司和开源不一样，所以就转到express org下面，独立了，由dougwilson一直维护。express的代码和测试都非常不错，大家可以看看，尤其是测试，会扒出无数没有遇到的场景，是学习的非常的途径。
 
 说完了express再说说Koa，koa 仍然是由 Express 原班人马打造的，致力于成为一个更小、更富有表现力、更健壮的 Web 框架。一个追求极致的框架，代码大约只有550行。对express基本上是0兼容，无论是中间件，还是用法、异常处理等，标新立异的让了解express的人咋舌，但破旧才能立新，也未尝是坏事。Koa最初是利用generator来实现异步控制，让代码在generator里看起来像同步调用，这其实是tj对generator的hack用法，后来还衍生出了co这个很有名的库，koa 1.x就是基于co + generator作为核心的。用了generator就会有一个问题，generator里只能使用this来处理上下文，所以this肆虐，到处都是。另外一个问题就是有generator+co导致koa的中间件和express中间件完全不一样，应该这样说，是强大了很多。这就是koa经典的洋葱模型-中间件机制，和Django Middleware非常像
 
@@ -79,9 +78,7 @@ Express是Node.js世界里最著名的框架，非常成熟、稳定，目前也
 
 但this的问题还是很头疼，而且还要支持async/await，于是就有koa 2.x，为了把koa的中间件改写，koa团队改变了co为promise-based模式，继而提供co.wrap处理generator，同时又提供了compose将中间件转成`(ctx,next) => {}`形式，这样就完成Koa 2.x的中间件3种调用方式的定型，使得Koa支持promise\generator\async等异步流程处理方式，变得更加fashion和通用，也就慢慢的开始流行了。对于Koa 1.x的中间件，Koa 2.x也是要向后兼容的，于是有了convert这个库。
 
-整体来说，Koa团队做的还是非常不错的，不过限于定位和时间，不太合适和express做对比。
-
-https://github.com/koajs/koa/blob/master/docs/koa-vs-express.md
+整体来说，Koa团队做的还是非常不错的，不过限于定位和时间，不太合适和express做对比。下面看一下[比较](https://github.com/koajs/koa/blob/master/docs/koa-vs-express.md)
 
 
 | Feature           | Koa | Express | Connect |
@@ -106,7 +103,7 @@ https://github.com/koajs/koa/blob/master/docs/koa-vs-express.md
 
 我个人特别喜欢Koa 2.x，上面的异步流程控制里也说过，Promise是必须会的，而且未来的趋势async/await，而await后面可以直接接Promise，所以Koa 2.x真的是大势所趋。
 
-目前论成熟度比express差点，学习曲线比express要高些，对于喜欢动手的朋友还是非常好的。我相信在2017年会有更多基于Koa 2.x的知名框架的。
+目前论成熟度Koa比express差点，学习曲线Koa比express要高些，对于喜欢动手的朋友还是非常好的。我相信在2017年会有更多基于Koa 2.x的知名框架的。
 
 ### 面向特性的Thinkjs
 
@@ -199,7 +196,21 @@ hapi里处处是配置，处处插件化，毁誉参半吧，对它的view部分
 
 > 如果说作为api类的服务，hapi是一个不错的选择
 
-## 如何技术选型？
+## 如何做框架选型？
+
+很多人都争论这个问题，不同的leader也有不同的解决方案，那么，如何做框架选型呢？我总结了一下，大概有3个决定因素
+
+- 场景，是做api还是管理后台，还是h5，不同的应用场景会有不一样的选择
+- 团队能力，如果团队Node.js经验非常丰富就无所谓，如果不是特别熟，那就至少要有一个人能cover住，如果都没有，那就挑选最成熟的最保守的做吧
+- 趋势，如果leader大局观不错，综合上面2点，再辅以趋势的话，就非常好，毕竟现在技术革新太快，别你刚学会，别人都不用了，也是比较痛苦的。
+
+无论如何，至少要有一个人能cover住，这是我选型的根本，框架再好，也不是给你设计的，所以难免会各有各种各样的问题，那么你就只有一个选择了
+
+> f**k = fork or fuck
+
+![Wtf](images/wtf.png)
+
+## 如何做技术选型？
 
 先说技术选型的3个思考点
 
@@ -239,19 +250,7 @@ hapi里处处是配置，处处插件化，毁誉参半吧，对它的view部分
 
 但凡是java或其他语言里比较成熟的库，可以作为独立服务使用的，都可以做Node.js的支持。避免过多的时间用在早轮子上，影响开发进度
 
-## 如何框架选型？
-
-很多人都争论这个问题，不同的leader也有不同的解决方案，那么，如何做框架选型呢？我总结了一下，大概有3个决定因素
-
-- 场景，是做api还是管理后台，还是h5，不同的应用场景会有不一样的选择
-- 团队能力，如果团队Node.js经验非常丰富就无所谓，如果不是特别熟，那就至少要有一个人能cover住，如果都没有，那就挑选最成熟的最保守的做吧
-- 趋势，如果leader大局观不错，综合上面2点，再辅以趋势的话，就非常好，毕竟现在技术革新太快，别你刚学会，别人都不用了，也是比较痛苦的。
-
-无论如何，至少要有一个人能cover住，这是我选型的根本，框架再好，也不是给你设计的，所以难免会各有各种各样的问题，那么你就只有一个选择了
-
-> f**k = fork or fuck
-
-![Wtf](images/wtf.png)
+> 在架构层面上，取长补短，才是最重要的。
 
 ## 写在最后
 
