@@ -1,0 +1,527 @@
+
+	    <html>
+	      <head>
+				  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	        <title>README</title>
+					
+					<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+					<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+					<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+			
+				  <style>
+					pre {
+					    counter-reset: line-numbering;
+					    border: solid 1px #d9d9d9;
+					    border-radius: 0;
+					    background: #fff;
+					    padding: 0;
+					    line-height: 23px;
+					    margin-bottom: 30px;
+					    white-space: pre;
+					    overflow-x: auto;
+					    word-break: inherit;
+					    word-wrap: inherit;
+					}
+
+					pre a::before {
+					  content: counter(line-numbering);
+					  counter-increment: line-numbering;
+					  padding-right: 1em; /* space after numbers */
+					  width: 25px;
+					  text-align: right;
+					  opacity: 0.7;
+					  display: inline-block;
+					  color: #aaa;
+					  background: #eee;
+					  margin-right: 16px;
+					  padding: 2px 10px;
+					  font-size: 13px;
+					  -webkit-touch-callout: none;
+					  -webkit-user-select: none;
+					  -khtml-user-select: none;
+					  -moz-user-select: none;
+					  -ms-user-select: none;
+					  user-select: none;
+					}
+
+					pre a:first-of-type::before {
+					  padding-top: 10px;
+					}
+
+					pre a:last-of-type::before {
+					  padding-bottom: 10px;
+					}
+
+					pre a:only-of-type::before {
+					  padding: 10px;
+					}
+			
+					.highlight { background-color: #ffffcc } /* RIGHT */
+					</style>
+	      </head>
+	      <body>
+				  <div>
+							<div style='width:25%;'>
+									<ul id="tree" class="ztree" style='width:100%'>
+		
+									</ul>
+							</div>
+			        <div id='readme' style='width:70%;margin-left:20%;'>
+			          	<article class='markdown-body'>
+			            	<style>.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f0f0f0; }
+.highlight .c { color: #60a0b0; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #007020; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #007020 } /* Comment.Preproc */
+.highlight .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #007020 } /* Keyword.Pseudo */
+.highlight .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #902000 } /* Keyword.Type */
+.highlight .m { color: #40a070 } /* Literal.Number */
+.highlight .s { color: #4070a0 } /* Literal.String */
+.highlight .na { color: #4070a0 } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+.highlight .no { color: #60add5 } /* Name.Constant */
+.highlight .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #007020 } /* Name.Exception */
+.highlight .nf { color: #06287e } /* Name.Function */
+.highlight .nl { color: #002070; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #bb60d5 } /* Name.Variable */
+.highlight .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #40a070 } /* Literal.Number.Bin */
+.highlight .mf { color: #40a070 } /* Literal.Number.Float */
+.highlight .mh { color: #40a070 } /* Literal.Number.Hex */
+.highlight .mi { color: #40a070 } /* Literal.Number.Integer */
+.highlight .mo { color: #40a070 } /* Literal.Number.Oct */
+.highlight .sb { color: #4070a0 } /* Literal.String.Backtick */
+.highlight .sc { color: #4070a0 } /* Literal.String.Char */
+.highlight .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #4070a0 } /* Literal.String.Double */
+.highlight .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #4070a0 } /* Literal.String.Heredoc */
+.highlight .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+.highlight .sx { color: #c65d09 } /* Literal.String.Other */
+.highlight .sr { color: #235388 } /* Literal.String.Regex */
+.highlight .s1 { color: #4070a0 } /* Literal.String.Single */
+.highlight .ss { color: #517918 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #bb60d5 } /* Name.Variable.Class */
+.highlight .vg { color: #bb60d5 } /* Name.Variable.Global */
+.highlight .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.highlight .il { color: #40a070 } /* Literal.Number.Integer.Long */</style>
+<h1>你们是不是想看框架大战？</h1>
+
+<p>Node.js从2009横空出世之后，至今已经7年有余，各种web框架也林林总总，目前大约在npm上有35万左右包，刨去前端和一些无意义的封装，也是有非常可观的优秀的模块的。其中web框架也是特别抢眼的，从早期的express到现在koa，对异步流程控制的改进前仆后继。随着移动端崛起面向api的框架hapi和restify也如火如荼，更有一些面向特性的框架，比如thinkjs对es6/es7/typescript支持，整体来说，质量都是非常不错的，算百花齐放，还是那句话，即使不优化，你也能用这些框架获得较高的性能。</p>
+
+<p>本文先概述Node.js的应用场景，各种框架比较（express、koa、thinkjs、hapi、restify、meteor、sails、egg等），最后给出技术选型和框架选型技巧。</p>
+
+<h2>Node.js的应用场景</h2>
+
+<p><img src="images/nodejs-overview.png" alt="Nodejs Overview"></p>
+
+<p>这是现代web里Node.js参与的部分。其实Node.js的应用场景，远远不止这些，目前都用的比较浅，大部分围绕在前端和Proxy层，这其实是不够的，但由于历史原因，很多遗留问题，目前Node.js只能先搞定前端，然后做Proxy层，然后继续在Proxy组装rpc服务，让Java等专注提供服务就好，这是一个理想的边界，对Node.js和Java来说是双赢的，将服务组装和api交给Node.js能够更灵活、应变，当线上系统遇到崩溃的时候，前端直接改就好了，同时又不影响Java优点的使用。</p>
+
+<p>Node.js能干什么？</p>
+
+<ul>
+<li>网站（如express/koa等）</li>
+<li>im即时聊天(socket.io)</li>
+<li>api（移动端，pc，h5）</li>
+<li>http proxy（淘宝首页）</li>
+<li>http proxy延伸，组装rpc服务，作为微服务的一部分</li>
+<li>前端构建工具(grunt/gulp/bower/webpack/fis3...)</li>
+<li>写操作系统（NodeOS）</li>
+<li>跨平台打包工具（nw.js、electron、cordova/phonegap）</li>
+<li>命令行工具（比如cordova）</li>
+<li>编辑器（atom，vscode）</li>
+</ul>
+
+<p>更多的见
+https://github.com/sindresorhus/awesome-nodejs 和 http://stackshare.io/nodejs/in-stacks</p>
+
+<h2>异步流程演进</h2>
+
+<p>这里加异步流程演进部分，目的是为了后面讲述框架变化做铺垫，同时异步流程控制也是Node.js非常核心的内容，是每个开发者都必须掌握的。</p>
+
+<p>JavaScript流程控制的演进过程，分以下6部分:</p>
+
+<ol>
+<li>同步代码</li>
+<li>异步JavaScript: callback hell</li>
+<li>Thunk</li>
+<li>Promise/a+</li>
+<li>生成器Generators/yield</li>
+<li>Async函数/Await（以前说是ES7 stage-3）</li>
+</ol>
+
+<p>看起来挺简单的，作为*js（沾边）工程师的各位自测一下，当前是哪个阶段？</p>
+
+<p>我对异步流程控制的总结</p>
+
+<ul>
+<li>Async函数是趋势，如果Chrome 52. v8 5.1已经支持Async函数(https://github.com/nodejs/CTC/issues/7)了，Node.js已经支持，Node.js 7.x版本需要加flag才能开启，在明年的8.x里会默认开启。</li>
+<li>Async和Generator函数里都支持promise，所以promise是必须会的。</li>
+<li>Generator和yield异常强大，不过不会成为主流，所以学会基本用法和promise就好了，没必要所有的都必须会。</li>
+<li>co作为Generator执行器是不错的，它更好的是当做Promise 包装器，通过Generator支持yieldable，最后返回Promise，是不是有点无耻？</li>
+</ul>
+
+<p>我整理了一张图，更直观一些。</p>
+
+<p><img src="images/async-all.png" alt="Async All"></p>
+
+<ul>
+<li>红色代表Promise，是使用最多的，无论async还是generator都可用</li>
+<li>蓝色是Generator，过度货</li>
+<li>绿色是Async函数，趋势</li>
+</ul>
+
+<p><strong>结论</strong>：Promise是必须会的，那你为什么不顺势而为呢？</p>
+
+<p><strong>推荐</strong>：使用Async函数 + Promise组合，如下图所示。</p>
+
+<p><img src="images/async-suggest.png" alt="Async Suggest"></p>
+
+<h2>Web框架大战</h2>
+
+<h3>Express or Koa?</h3>
+
+<p>Express是Node.js世界里最著名的框架，非常成熟、稳定，目前也是大家用的最多的框架。</p>
+
+<p>先看一下演进的历史，最早是有connect，一个中间件框架，是对Node.js内置的http模块的补充，主要是提供了中间件机制。然后有了express，在express 4.0之前都是内置connect作为中间件内核的，在4.0之后就剔除了connect，express自己实现中间件机制，但兼容connect系列的中间件，所以很多书（比如Node.js in action）介绍http之后介绍connect之后介绍express，虽然Node.js版本老点，当整体来看，说不过时的。在express下一个版本里router也会被独立出去，但2年了，迟迟未发，中间颇为周折，最开始是tj名下的，后来tj象征性的转让给strongloop，但是转过去之后并不是很愉快，导致很多人呼吁独立，毕竟商业公司和开源不一样，所以就转到express org下面，独立了，由dougwilson一直维护。express的代码和测试都非常不错，大家可以看看，尤其是测试，会扒出无数没有遇到的场景，是学习的非常的途径。</p>
+
+<p>说完了express再说说Koa，koa 仍然是由 Express 原班人马打造的，致力于成为一个更小、更富有表现力、更健壮的 Web 框架。一个追求极致的框架，代码大约只有550行。对express基本上是0兼容，无论是中间件，还是用法、异常处理等，标新立异的让了解express的人咋舌，但破旧才能立新，也未尝是坏事。Koa最初是利用generator来实现异步控制，让代码在generator里看起来像同步调用，这其实是tj对generator的hack用法，后来还衍生出了co这个很有名的库，koa 1.x就是基于co + generator作为核心的。用了generator就会有一个问题，generator里只能使用this来处理上下文，所以this肆虐，到处都是。另外一个问题就是有generator+co导致koa的中间件和express中间件完全不一样，应该这样说，是强大了很多。这就是koa经典的洋葱模型-中间件机制，和Django Middleware非常像</p>
+
+<p><img src="images/koa.png" alt="Koa"></p>
+
+<p>它可以出来请求之前和请求穿过中间件后回来的请求，这样的便利非常大，代码精简，异常等都能有更好的处理。</p>
+
+<p>但this的问题还是很头疼，而且还要支持async/await，于是就有koa 2.x，为了把koa的中间件改写，koa团队改变了co为promise-based模式，继而提供co.wrap处理generator，同时又提供了compose将中间件转成<code>(ctx,next) =&gt; {}</code>形式，这样就完成Koa 2.x的中间件3种调用方式的定型，使得Koa支持promise\generator\async等异步流程处理方式，变得更加fashion和通用，也就慢慢的开始流行了。对于Koa 1.x的中间件，Koa 2.x也是要向后兼容的，于是有了convert这个库。</p>
+
+<p>整体来说，Koa团队做的还是非常不错的，不过限于定位和时间，不太合适和express做对比。下面看一下<a href="https://github.com/koajs/koa/blob/master/docs/koa-vs-express.md">比较</a></p>
+
+<table><thead>
+<tr>
+<th style="text-align: right">Feature</th>
+<th>Koa</th>
+<th>Express</th>
+<th>Connect</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: right">Middleware Kernel</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td style="text-align: right">Routing</td>
+<td></td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right">Templating</td>
+<td></td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right">Sending Files</td>
+<td></td>
+<td>✓</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right">JSONP</td>
+<td></td>
+<td>✓</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>拿koa来比较express并不太合适，可以说它是介于connect和express中间的框架</p>
+
+<ul>
+<li>与connect类似都是调用栈思想，但修改了中间件模式，Koa 1.x使用generator，Koa 2.x中间件更丰富</li>
+<li>把express里的一些好的东西加进去，但剔除了路由，视图渲染等特性</li>
+<li>对异常处理更好</li>
+</ul>
+
+<p>给出定位</p>
+
+<ul>
+<li>Express成熟稳定，入门、应用俱佳</li>
+<li>Koa是下一代web框架，大势所趋</li>
+</ul>
+
+<p>我个人特别喜欢Koa 2.x，上面的异步流程控制里也说过，Promise是必须会的，而且未来的趋势async/await，而await后面可以直接接Promise，所以Koa 2.x真的是大势所趋。</p>
+
+<p>目前论成熟度Koa比express差点，学习曲线Koa比express要高些，对于喜欢动手的朋友还是非常好的。我相信在2017年会有更多基于Koa 2.x的知名框架的。</p>
+
+<p>给出每年的技术栈选型</p>
+
+<p>2015年</p>
+
+<ul>
+<li>Web框架：express</li>
+<li>数据库：mongoose</li>
+<li>测试：mocha + chai</li>
+<li>流程控制：bluebird（传统的promise）</li>
+<li>调试：node-inspector</li>
+</ul>
+
+<p>2016年，升级Node 4.x和Koa</p>
+
+<ul>
+<li>Web框架：Koa</li>
+<li>数据库：mongoose</li>
+<li>测试：ava</li>
+<li>流程控制：bluebird（generator、async）</li>
+<li>调试：vscode</li>
+</ul>
+
+<p>在2017年，我想我会加上TypeScript，其他待定。</p>
+
+<h3>面向特性的Thinkjs</h3>
+
+<p>Thinkjs 是一个快速、简单的基于MVC和面向对象的轻量级Node.js开发框架，遵循MIT协议发布。秉承简洁易用的设计原则，在保持出色的性能和至简的代码同时，注重开发体验和易用性，为WEB应用开发提供强有力的支持。</p>
+
+<p>Thinkjs里面很多特性来源于ThinkPHP，同时根据Node.js的特点，使用了Promise, WebSocket等特性，让代码更简洁、优雅。</p>
+
+<p>Thinkjs最大的特色是对目前比较潮的语法特性支持的特别好，比如es6、es7、typescript等，有了这些，对aysnc/await等特性支持，让代码更加fashion</p>
+
+<p><img src="images/thinkjs.png" alt="Thinkjs"></p>
+
+<p>Thinkjs的特点</p>
+
+<ul>
+<li>完全自己实现，对已有框架很少借鉴</li>
+<li>内置各种adapter，db，中间件，hook，插件，非常丰富，all in one 比组装更适合新手</li>
+<li>遵循mvc和coc</li>
+<li>使用最潮的es6/es7/ts特性，对aysnc函数，exports等都非常好的支持</li>
+<li>支持i18n等实用功能</li>
+<li>内置pm2和nginx集成，部署方便</li>
+<li>有自己的脚手架，稍弱</li>
+<li>性能不错，虽然比express稍弱，但功能强大许多</li>
+<li>测试丰富，代码质量有保障</li>
+<li>文档健全，是经过设计的，支持多语言</li>
+<li>背后有75团和李成银支持，最近一周内有更新，代码提交2600+，35人贡献，整体来说算健康</li>
+</ul>
+
+<p>不足也是有的</p>
+
+<ul>
+<li>参考Thinkphp，对于熟悉rails类的人不太舒服，熟悉php的人应该上手极其简单</li>
+<li>babel安装包还是比较大啊，虽然很多人已经标配</li>
+<li>代码完全自己实现，难免有些命名，习惯上的问题</li>
+<li>很难复用开发者已有的经验，跟express、koa几乎是另外一条路</li>
+</ul>
+
+<blockquote>
+<p>结语：在目前来看，对于最潮的es6/es7/ts特性上，Thinkjs几乎是唯一的选型。如果用户是新手或者对新特性熟悉或者有php开发经验，将会是一款快速开发的利器。</p>
+</blockquote>
+
+<h3>面向api的Hapi</h3>
+
+<p>你可能不知道hapi，我猜你可能用过joi这个模块，它们都是<a href="http://www.walmartlabs.com/innovation/open-source/">沃尔玛团队</a>开发的，joi是很好用的验证模块，我们有理由相信这个团队的核心项目hapi也是不错的。</p>
+
+<p>2011年8月5日，WalmartLabs的一位成员Eran Hammer提交了Hapi的第一次commit。Hapi原本是Postmile的一部分，并且最开始是基于Express构建的。后来它发展成自己自己的框架，正如Eran在他的博客里面所说的：</p>
+
+<blockquote>
+<p>Hapi基于这么一个想法：配置优于编码，业务逻辑必须和传输层进行分离..</p>
+</blockquote>
+
+<p>Hapi最新版本为16.1.0（版本帝，而且尤其喜欢升大版本），拥有4879次commits，并且仍然由Eran Hammer维护。</p>
+
+<p><img src="images/hapi.png" alt="Hapi"></p>
+
+<p>Hapi的发音是happy，一般我都读成h-api</p>
+
+<p>一句话</p>
+
+<blockquote>
+<p>Web and services application framework</p>
+</blockquote>
+
+<p>（web和服务）应用框架，开篇名义，非常好理解，对于web和service开发都是非常好的框架。一般我们见到的到多是web框架，很少有强调服务的，hapi里的api大概就是起名之初就确定了它的定位。一直以来我都喜欢把hapi和restify放到一起，从名字和框架功能上看，他们对于api服务的支持要好于哪些所谓的web框架。</p>
+
+<p>再看一下更详细的定义</p>
+
+<blockquote>
+<p>hapi is a simple to use configuration-centric framework with built-in support for input validation, caching, authentication, and other essential facilities for building web and services applications. hapi enables developers to focus on writing reusable application logic in a highly modular and prescriptive approach.</p>
+</blockquote>
+
+<ul>
+<li>configuration-centric是以配置为中心</li>
+<li>内置用于构建web和service应用的：验证, 缓存, 鉴权, 和其他基础设施</li>
+<li>hapi让开发者更加专注编写可重用的应用逻辑</li>
+</ul>
+
+<p>优点</p>
+
+<ul>
+<li>高性能 - WalmartLabs的那些人开发Hapi的时候，遵守Benchmark Driven Development，其结果hapi是一个high-performance的框架</li>
+<li>安全 - Eran Hammer（Hapi开发者组长）是OAuth (安全授权) 规范的最初作者。 他有关注hapi安全的意识，并review所有Hapi包含的代码。很多<a href="https://nodesecurity.io/">Node Security 项目</a>的成员是是Hapi的核心贡献者，这意味着非常多关注安全的眼睛在关注代码安全</li>
+<li>可扩展性 - 应对高并发还是非常好的</li>
+<li>Mobile 优化 (轻量级 - 为移动电商而构建)</li>
+<li>插件架构 - 扩展/增加 你自己的模块 (良好的生态)</li>
+<li>对 DevOps 友好 - 基于配置的开发和强大的stats/logging</li>
+<li>内置缓存 (Redis, MongoDB 或 Memcached) </li>
+<li>核心代码做了100% 测试/代码覆盖率 - 严格的方法来保证质量</li>
+<li>可测试性 - hapi内置端到端测试，因为它包含了<a href="https://github.com/hapijs/shot">shot</a>模块</li>
+<li>核心功能内置，而其他特性以插件的形式展现: http://hapijs.com/plugins</li>
+</ul>
+
+<p>总结hapi好的点</p>
+
+<ul>
+<li>定位非常准，以api作为切入点，区别express等传统web框架</li>
+<li>背后有沃尔玛公司应用、支持，项目也还是比较健康的，是经过大规模应用的</li>
+<li>基本可以做到开箱即用，和thinkjs差不多，但比thinkjs的插件要丰富很多</li>
+<li>文档还算可以</li>
+<li>辅助性的工具还是非常完善的，尤其是devops相关的，比express等要好很多</li>
+</ul>
+
+<p>不好的点</p>
+
+<ul>
+<li>框架的api和代码具有沃尔玛风格，不是很规范</li>
+<li>对于新特性没有内置，也还是算比较传统</li>
+</ul>
+
+<p>hapi里处处是配置，处处插件化，毁誉参半吧，对它的view部分设计不是很喜欢，有兴趣的可以以测测性能，应该不会比express好。</p>
+
+<blockquote>
+<p>如果说作为api类的服务，hapi是一个不错的选择</p>
+</blockquote>
+
+<h2>如何做框架选型？</h2>
+
+<p>很多人都争论这个问题，不同的leader也有不同的解决方案，那么，如何做框架选型呢？我总结了一下，大概有3个决定因素</p>
+
+<ul>
+<li>场景，是做api还是管理后台，还是h5，不同的应用场景会有不一样的选择</li>
+<li>团队能力，如果团队Node.js经验非常丰富就无所谓，如果不是特别熟，那就至少要有一个人能cover住，如果都没有，那就挑选最成熟的最保守的做吧</li>
+<li>趋势，如果leader大局观不错，综合上面2点，再辅以趋势的话，就非常好，毕竟现在技术革新太快，别你刚学会，别人都不用了，也是比较痛苦的。</li>
+</ul>
+
+<p>无论如何，至少要有一个人能cover住，这是我选型的根本，框架再好，也不是给你设计的，所以难免会各有各种各样的问题，那么你就只有一个选择了</p>
+
+<blockquote>
+<p>f**k = fork or fuck</p>
+</blockquote>
+
+<p>要么fork了自己改，要么what the fuck。。。</p>
+
+<p><img src="images/wtf.png" alt="Wtf"></p>
+
+<h2>如何做技术选型？</h2>
+
+<p>先说技术选型的3个思考点</p>
+
+<ul>
+<li>在语言层面可以做，那语言层面做</li>
+<li>如果语言层面搞不定，那就架构层面做</li>
+<li>如果架构层面也搞不定，这东西就不能用了</li>
+</ul>
+
+<p><img src="images/arch.png" alt=""></p>
+
+<p>各自做各自合适的事儿就好，下面分别举例看看</p>
+
+<p>我们很坦然的面对Node.js的优点和缺点</p>
+
+<ul>
+<li>1）语言层面能解决的
+
+<ul>
+<li>已有大量npm上的模块(目前在35万个以上) </li>
+<li>自己造轮子(站在海量包上+简单语法+npm=快速)</li>
+<li>使用Node.js里的<a href="https://github.com/nodejs/nan">nan</a>自己包装c/c++轮子</li>
+</ul></li>
+</ul>
+
+<p>绝大部分需求都可以满足了  </p>
+
+<ul>
+<li>2）架构层面能解决的
+
+<ul>
+<li>业务边界、模块拆分、面向服务</li>
+<li>mq、rpc、cache</li>
+<li>运维、监控、自动化</li>
+</ul></li>
+</ul>
+
+<p>稍微解释一下</p>
+
+<ul>
+<li>首先，架构和是不是Node.js写的没关系，是独立的</li>
+<li>其次，架构师常用的东东有足够的Node.js模块支持，比如mq，像rabbitmq有比较好的node模块支持，像rpc里thrift、grpc、tchannel支持的都不错，我们使用的senecajs，比如redis，我们使用的ioredis，后面做ha都是一样的。</li>
+<li>合适的场景用合适的东西</li>
+</ul>
+
+<p>有很多东西是Node.js不擅长，又不在架构范畴里的，咋办？</p>
+
+<p>3）如实在不够，java补（严格点，应该叫其他语言补）
+  - 比如复杂excel生成
+  - 比如apns推送（go做其实也很好，不过除了我，没人能维护。。。）</p>
+
+<p>但凡是java或其他语言里比较成熟的库，可以作为独立服务使用的，都可以做Node.js的支持。避免过多的时间用在早轮子上，影响开发进度</p>
+
+<blockquote>
+<p>在架构层面上，取长补短，才是最重要的。</p>
+</blockquote>
+
+<h2>写在最后</h2>
+
+<p>在2017年，Node.js会往后端继续前进，如果能够把rpc服务组装部分做好，我觉得就非常好了。随着React、Vue、Typescript、Flow、Lerna、Webpack、Vscode等带动，Node.js一定会取得更辉煌的成绩！</p>
+
+<p>限于篇幅和读者的习惯，关于restify，sails，同构的meteor，蚂蚁金服刚开源的eggjs或者其他框架，欢迎参加知乎live，点击阅读原文，即可与狼叔一起讨论，不只是学习，更是与大牛近距离接触，StuQ你值得拥有</p>
+
+			          	</article>
+			        </div>
+					</div>
+	      </body>
+	    </html>
+			<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+			<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+			<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+      <script type="text/javascript" src="toc/toc_conf.js"></script>
+      
+			<SCRIPT type="text/javascript" >
+			<!--
+			$(document).ready(function(){
+          var css_conf = eval(markdown_panel_style);
+          $('#readme').css(css_conf)
+          
+          var conf = eval(jquery_ztree_toc_opts);
+  				$('#tree').ztree_toc(conf);
+
+				
+			});
+			//-->
+			</SCRIPT>
+	  
