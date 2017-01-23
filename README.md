@@ -105,6 +105,26 @@ Express是Node.js世界里最著名的框架，非常成熟、稳定，目前也
 
 目前论成熟度Koa比express差点，学习曲线Koa比express要高些，对于喜欢动手的朋友还是非常好的。我相信在2017年会有更多基于Koa 2.x的知名框架的。
 
+给出每年的技术栈选型
+
+2015年
+
+- Web框架：express
+- 数据库：mongoose
+- 测试：mocha + chai
+- 流程控制：bluebird（传统的promise）
+- 调试：node-inspector
+
+2016年，升级Node 4.x和Koa
+
+- Web框架：Koa
+- 数据库：mongoose
+- 测试：ava
+- 流程控制：bluebird（generator、async）
+- 调试：vscode
+
+在2017年，我想我会加上TypeScript，其他待定。
+
 ### 面向特性的Thinkjs
 
 Thinkjs 是一个快速、简单的基于MVC和面向对象的轻量级Node.js开发框架，遵循MIT协议发布。秉承简洁易用的设计原则，在保持出色的性能和至简的代码同时，注重开发体验和易用性，为WEB应用开发提供强有力的支持。
