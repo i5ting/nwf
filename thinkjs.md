@@ -4,6 +4,13 @@
 - 代码 https://github.com/75team/thinkjs
 - 作者 李成银 @welefen
 
+Thinkjs 是一个快速、简单的基于MVC和面向对象的轻量级Node.js开发框架，遵循MIT协议发布。秉承简洁易用的设计原则，在保持出色的性能和至简的代码同时，注重开发体验和易用性，为WEB应用开发提供强有力的支持。
+
+Thinkjs里面很多特性来源于ThinkPHP，同时根据Node.js的特点，使用了Promise, WebSocket等特性，让代码更简洁、优雅。
+
+Thinkjs最大的特色是对目前比较潮的语法特性支持的特别好，比如es6、es7、typescript等，有了这些，对aysnc/await等特性支持，让代码更加fashion
+
+
 ## 安装
 
 安装命令行工具
