@@ -258,5 +258,5 @@ hapi里处处是配置，处处插件化，毁誉参半吧，对它的view部分
 
 在2017年，Node.js会往后端继续前进，如果能够把rpc服务组装部分做好，我觉得就非常好了。随着React、Vue、Typescript、Flow、Lerna、Webpack、Vscode等带动，Node.js一定会取得更辉煌的成绩！
 
-限于篇幅和读者的习惯，关于restify，同构的meteor，蚂蚁金服刚开源的eggjs或者其他框架，欢迎参加知乎live，点击阅读原文，即可与狼叔一起讨论，不只是学习，更是与大牛近距离接触，StuQ你值得拥有
+限于篇幅和读者的习惯，关于restify，sails，同构的meteor，蚂蚁金服刚开源的eggjs或者其他框架，欢迎参加知乎live，点击阅读原文，即可与狼叔一起讨论，不只是学习，更是与大牛近距离接触，StuQ你值得拥有
 
