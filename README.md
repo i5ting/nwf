@@ -2,11 +2,7 @@
 
 Node.js从2009横空出世之后，至今已经7年有余，各种web框架也林林总总，目前大约在npm上有35万左右包，刨去前端和一些无意义的封装，也是有非常可观的优秀的模块的。其中web框架也是特别抢眼的，从早期的express到现在koa，对异步流程控制的改进前仆后继。随着移动端崛起面向api的框架hapi和restify也如火如荼，更有一些面向特性的框架，比如thinkjs对es6/es7/typescript支持，整体来说，质量都是非常不错的，算百花齐放，还是那句话，即使不优化，你也能用这些框架获得较高的性能。
 
-bamei、think、express、hapi、koa、moa、meteor、restify、egg
-
-express、koa、thinkjs、hapi、restify、meteor、sails、egg
-
-本文先概述Node.js的应用场景，各种框架比较，最后给出选型技巧
+本文先概述Node.js的应用场景，各种框架比较（express、koa、thinkjs、hapi、restify、meteor、sails、egg等），最后给出技术选型和框架选型技巧。
 
 ## Node.js的应用场景
 
@@ -34,6 +30,8 @@ https://github.com/sindresorhus/awesome-nodejs
 http://stackshare.io/nodejs/in-stacks
 
 ## 异步流程演进
+
+这里加异步流程演进部分，目的是为了后面框架变化做铺垫，同时异步流程控制也是Node.js非常核心的内容，是每个开发者都必须掌握的。
 
 JavaScript流程控制的演进过程，分以下6部分:
 
@@ -67,15 +65,48 @@ JavaScript流程控制的演进过程，分以下6部分:
 
 ![Async Suggest](images/async-suggest.png)
 
+## Web框架大战
 
-## Web框架
+### Express or Koa?
 
-### Express
+Express是Node.js世界里最著名的框架，非常成熟、稳定，目前也是大家用的最多的框架。先看一下演进的历史，最早是有connect，一个中间件框架，是对Node.js内置的http模块的补充，主要是提供了中间件机制。然后有了express，在express 4.0之前都是内置connect作为中间件内核的，在4.0之后就express自己实现了，但兼容connect系列的中间件，所以很多书（比如Node.js in action）介绍http之后介绍connect之后介绍express，虽然Node.js版本老点，当整体来看，说不过时的。在express下一个版本里router也会被独立出去，但2年了，迟迟未发，中间颇为周折，最开始是tj名下的，后来tj象征性的转让给strongloop，但是转过去之后并不是很愉快，导致很多人呼吁独立，毕竟商业公司和开源不一样，所以就转到express独立了，由dougwilson一直维护。express的代码和测试都非常不错，大家可以看看，尤其是测试，会扒出无数没有遇到的场景，是学习的非常的途径。
+
+说完了express再说说Koa，koa 仍然是由 Express 原班人马打造的，致力于成为一个更小、更富有表现力、更健壮的 Web 框架。一个追求极致的框架，代码大约只有550行。对express基本上是0兼容，无论是中间件，还是用法、异常处理等，标新立异的让了解express的人咋舌，但破旧才能立新，也未尝是坏事。Koa最初是利用generator来实现异步控制，让代码在generator里看起来像同步调用，这其实是tj对generator的hack用法，后来还衍生出了co这个很有名的库，koa 1.x就是基于co + generator作为核心的。用了generator就会有一个问题，generator里只能使用this来处理上下文，所以this肆虐，到处都是。另外一个问题就是有generator+co导致koa的中间件和express中间件完全不一样，应该这样说，是强大了很多。这就是koa经典的洋葱模型-中间件机制，和Django Middleware非常像
+
+![Koa](images/koa.png)
+
+它可以出来请求之前和请求穿过中间件后回来的请求，这样的便利非常大，代码精简，异常等都能有更好的处理。
+
+但this的问题还是很头疼，而且还要支持async/await，于是就有koa 2.x，为了把koa的中间件改写，koa团队改变了co为promise-based模式，继而提供co.wrap处理generator，同时又提供了compose将中间件转成`(ctx,next) => {}`形式，这样就完成Koa 2.x的中间件3种调用方式的定型，使得Koa支持promise\generator\async等异步流程处理方式，变得更加fashion和通用，也就慢慢的开始流行了。对于Koa 1.x的中间件，Koa 2.x也是要向后兼容的，于是有了convert这个库。
+
+整体来说，Koa团队做的还是非常不错的，不过限于定位和时间，不太合适和express做对比。
+
+https://github.com/koajs/koa/blob/master/docs/koa-vs-express.md
 
 
+| Feature           | Koa | Express | Connect |
+|------------------:|-----|---------|---------|
+| Middleware Kernel | ✓   | ✓       | ✓       |
+| Routing           |     | ✓       |         |
+| Templating        |     | ✓       |         |
+| Sending Files     |     | ✓       |         |
+| JSONP             |     | ✓       |         |
 
-### Koa
 
+拿koa来比较express并不太合适，可以说它是介于connect和express中间的框架
+
+- 与connect类似都是调用栈思想，但修改了中间件模式，Koa 1.x使用generator，Koa 2.x中间件更丰富
+- 把express里的一些好的东西加进去，但剔除了路由，视图渲染等特性
+- 对异常处理更好
+
+给出定位
+
+- Express成熟稳定，入门、应用俱佳
+- Koa是下一代web框架，大势所趋
+
+我个人特别喜欢Koa 2.x，上面的异步流程控制里也说过，Promise是必须会的，而且未来的趋势async/await，而await后面可以直接接Promise，所以Koa 2.x真的是大势所趋。
+
+目前论成熟度比express差点，学习曲线比express要高些，对于喜欢动手的朋友还是非常好的。我相信在2017年会有更多基于Koa 2.x的知名框架的。
 
 ### 面向特性的Thinkjs
 
@@ -224,5 +255,7 @@ hapi里处处是配置，处处插件化，毁誉参半吧，对它的view部分
 
 ## 写在最后
 
-关于同构的meteor，蚂蚁金服刚开源的eggjs或者其他框架，欢迎参加知乎live，点击阅读原文，即可与狼叔一起讨论，不只是学习，更是与大牛近距离接触，StuQ你值得拥有
+在2017年，Node.js会往后端继续前进，如果能够把rpc服务组装部分做好，我觉得就非常好了。随着React、Vue、Typescript、Flow、Lerna、Webpack、Vscode等带动，Node.js一定会取得更辉煌的成绩！
+
+限于篇幅和读者的习惯，关于restify，同构的meteor，蚂蚁金服刚开源的eggjs或者其他框架，欢迎参加知乎live，点击阅读原文，即可与狼叔一起讨论，不只是学习，更是与大牛近距离接触，StuQ你值得拥有
 
