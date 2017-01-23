@@ -208,6 +208,8 @@ hapi里处处是配置，处处插件化，毁誉参半吧，对它的view部分
 
 > f**k = fork or fuck
 
+要么fork了自己改，要么what the fuck。。。
+
 ![Wtf](images/wtf.png)
 
 ## 如何做技术选型？
